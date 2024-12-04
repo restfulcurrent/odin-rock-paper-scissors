@@ -16,3 +16,9 @@ function getComputerChoice() {
             return SCISSORS;
     }
 }
+
+// Returns the human choice
+function getHumanChoice() {
+    const choice = prompt("Enter your choice");
+    return choice;
+}
