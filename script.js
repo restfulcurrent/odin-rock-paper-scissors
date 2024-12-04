@@ -5,9 +5,9 @@ function getComputerChoice() {
     const SCISSORS = "scissors";
 
     // Generate random integer from 0 (inclusive) to 2 (inclusive)
-    const choiceInteger = Math.floor(Math.random() * 3);
+    const choice = Math.floor(Math.random() * 3);
 
-    switch(choiceInteger) {
+    switch(choice) {
         case 0:
             return ROCK;
         case 1:
