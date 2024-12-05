@@ -73,11 +73,11 @@ function playRound(humanChoice, computerChoice){
 
     if (compIsWinner) {
         computerScore += 1;
-        summary = `I win! ${summary}`;
+        summary = `Computer wins! ${summary}`;
         console.log(summary);
     } else {
         humanScore += 1;
-        summary = `You win! ${summary}`;
+        summary = `Human wins! ${summary}`;
         console.log(summary);
     }
 }
