@@ -8,6 +8,16 @@ function playGame() {
     let computerScore = 0;
     let humanScore = 0;
 
+    const header = document.createElement("h1");
+    header.textContent = "Rock Paper Scissors";
+    document.body.appendChild(header);
+
+    // Display the running score
+    const score = document.createElement("div");
+    score.setAttribute("class", "score");
+    score.textContent = `Human: ${humanScore} Computer: ${computerScore}`;
+    document.body.appendChild(score);
+
     // Create rock, paper, scissors buttons
     const buttons = createButtons();
     document.body.appendChild(buttons);
@@ -18,12 +28,6 @@ function playGame() {
     result.setAttribute("class", "result");
     result.textContent = "";
     document.body.appendChild(result);
-
-    // Display the running score
-    const score = document.createElement("div");
-    score.setAttribute("class", "score");
-    score.textContent = `Human Score: ${humanScore} Computer Score: ${computerScore}`;
-    document.body.appendChild(score);
 
     // Plays a round of rock paper scissors, displays results, 
     // updates running tally and ends game if someone's score > 5
@@ -72,7 +76,7 @@ function playGame() {
             endGame();
         }
 
-        score.textContent = `Human Score: ${humanScore} Computer Score: ${computerScore}`;
+        score.textContent = `Human: ${humanScore} Computer: ${computerScore}`;
 
         function capitalizeFirstLetter(text) {
             return text.at(0).toUpperCase() + text.slice(1);
@@ -109,7 +113,12 @@ function playGame() {
 
             const restart = document.createElement("button");
             restart.textContent = "Restart";
-            restart.addEventListener("click", () => {
+            restart.setAttribute("class", "restart");
+            restart.addEventListener("click", clearGame);
+            document.body.appendChild(restart);
+
+            // Callback function tthat clears game
+            function clearGame(event) {
                 document.body.removeChild(restart);
                 document.body.removeChild(gameOver);
                 result.textContent = "";
@@ -117,8 +126,7 @@ function playGame() {
                 computerScore = 0;
                 score.textContent = `Human Score: ${humanScore} Computer Score: ${computerScore}`;
                 buttons.addEventListener("click", playRoundWithCorrectHumanChoice);
-            });
-            document.body.appendChild(restart)
+            }
         }
     }
 
